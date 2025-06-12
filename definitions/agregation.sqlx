@@ -144,7 +144,7 @@ inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_STOCHASTIC_TI\` c2
 inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_TRUE_RANGE_TI\` c21 on a1.Date = c21.Date
 inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_WILLIAMS_R_TI\` c22 on a1.Date = c22.Date
 
-order by a1.Date;
+order by a1.Date
 
 
 
