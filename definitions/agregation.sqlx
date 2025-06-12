@@ -22,13 +22,130 @@ a1.distance_pivot as distance_pivot_1,
 a2.result as extremum_2,	
 a2.distance_pivot as distance_pivot_2,
 a3.result as extremum_3,	
-a3.distance_pivot as distance_pivot_3
+a3.distance_pivot as distance_pivot_3,
+a4.result as extremum_4,	
+a4.distance_pivot as distance_pivot_4,
+a5.result as extremum_5,	
+a5.distance_pivot as distance_pivot_5,
+a6.result as extremum_6,	
+a6.distance_pivot as distance_pivot_6,
+a7.result as extremum_7,	
+a7.distance_pivot as distance_pivot_7,
+a8.result as extremum_8,	
+a8.distance_pivot as distance_pivot_8,
+a9.result as extremum_9,	
+a9.distance_pivot as distance_pivot_9,
+a10.result as extremum_10,	
+a10.distance_pivot as distance_pivot_10,
+
+# PCA Euribor
+b1.principal_component_1,	
+b1.principal_component_2,	
+b1.principal_component_3,
+
+# Devises
+b2.Cloture as Cloture_USD_CHF,
+b3.Cloture as Cloture_USD_CNY,
+b4.Cloture as Cloture_USD_EUR,
+b5.Cloture as Cloture_USD_GBP,
+b6.Cloture as Cloture_USD_JPY,
+
+# Indice de volatilité
+b7.Cloture as Cloture_VIX,
+b8.Cloture as Cloture_VXD,
+
+# Indicateurs boursier
+c1.Aroon_Up, 
+c1.Aroon_Down,
+c1.Aroon_Oscillator,
+c2.BB_Upper,	
+c2.BB_Middle,	
+c2.BB_Lower,
+c3.CCI,
+c4.CMF,
+c5.CMO,
+c6.AD_Line,
+c7.Chaikin_Volatility,
+c8.ADX,	
+c8.DI_Plus,	
+c8.DI_Minus,
+c9.Donchian_Upper,	
+c9.Donchian_Lower,	
+c9.Donchian_Middle,
+c10.EMV,
+c11.MACD,	
+c11.MACD_Signal,	
+c11.MACD_Histogram,
+c12.MFI,
+c13.Momentum,
+c14.SMA,	
+c14.EMA,	
+c14.DEMA,	
+c14.TEMA,	
+c14.WMA,
+c15.OBV,
+c16.Returns,	
+c16.Log_Returns,	
+c16.Log_Price,
+c17.ROC,
+c18.RSI,
+c19.SAR,
+c20.Stoch_K,	
+c20.Stoch_D,
+c21.True_Range,	
+c21.ATR,
+Williams_R,
+
+# sous-jacent
+c1.Index_Name
 
 FROM \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_1\` a1
 inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_2\` a2 on a1.Date = a2.Date
 inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_3\` a3 on a1.Date = a3.Date
+inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_4\` a4 on a1.Date = a4.Date
+inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_5\` a5 on a1.Date = a5.Date
+inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_6\` a6 on a1.Date = a6.Date
+inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_7\` a7 on a1.Date = a7.Date
+inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_8\` a8 on a1.Date = a8.Date
+inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_9\` a9 on a1.Date = a9.Date
+inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_10\` a10 on a1.Date = a10.Date
 
-order by a1.Date
+inner join \`financial-data-storage.clean_data_prod.acp_projection\` b1 on a1.Date = b1.Date
+
+inner join \`financial-data-storage.clean_data_prod.USD_CHF\` b2 on a1.Date = b2.Date
+inner join \`financial-data-storage.clean_data_prod.USD_CNY\` b3 on a1.Date = b3.Date
+inner join \`financial-data-storage.clean_data_prod.USD_EUR\` b4 on a1.Date = b4.Date
+inner join \`financial-data-storage.clean_data_prod.USD_GBP\` b5 on a1.Date = b5.Date
+inner join \`financial-data-storage.clean_data_prod.USD_JPY\` b6 on a1.Date = b6.Date
+
+inner join \`financial-data-storage.clean_data_prod.VIX\` b7 on a1.Date = b7.Date
+inner join \`financial-data-storage.clean_data_prod.VXD\` b8 on a1.Date = b8.Date
+
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_AROON_TI\` c1 on a1.Date = c1.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_BOLLINGER_BANDS_TI\` c2 on a1.Date = c2.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_CCI_TI\` c3 on a1.Date = c3.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_CMF_TI\` c4 on a1.Date = c4.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_CMO_TI\` c5 on a1.Date = c5.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_Chaikin_AD_TI\` c6 on a1.Date = c6.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_Chaikin_Vol_TI\` c7 on a1.Date = c7.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_DMI_TI\` c8 on a1.Date = c8.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_DONCHIAN_CHANNELS_TI\` c9 on a1.Date = c9.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_EMV_TI\` c10 on a1.Date = c10.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_MACD_TI\` c11 on a1.Date = c11.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_MFI_TI\` c12 on a1.Date = c12.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_MOMENTUM_TI\` c13 on a1.Date = c13.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_MOVING_AVERAGES_TI\` c14 on a1.Date = c14.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_OBV_TI\` c15 on a1.Date = c15.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_RETURNS_TI\` c16 on a1.Date = c16.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_ROC_TI\` c17 on a1.Date = c17.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_RSI_TI\` c18 on a1.Date = c18.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_SAR_TI\` c19 on a1.Date = c19.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_STOCHASTIC_TI\` c20 on a1.Date = c20.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_TRUE_RANGE_TI\` c21 on a1.Date = c21.Date
+inner join \`financial-data-storage.Ind_Tech_DJI_prod.${item}_WILLIAMS_R_TI\` c22 on a1.Date = c22.Date
+
+order by a1.Date;
+
 
 
 );`).join('\n')}
