@@ -7,7 +7,7 @@ config {
 js {
   const projectId = "financial-data-storage"; // Remplacez par votre vrai project ID
   const database_Id = "agregation_data_prod";
-  const indice = ["DJI","cac40"]; // base de donnée resultat
+  const indice = ["cac40","DJI","SP500","Nasdaq","Nasdaq100"]; // base de donnée resultat
 
 }
 
