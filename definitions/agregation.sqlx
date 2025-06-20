@@ -1,13 +1,13 @@
 config {
   type: "operations",
-  schema: "agregation_data_preprod",
+  schema: "agregation_data_prod",
   description: "Test minimal avec opérations multiples"
 }
 
 js {
   const projectId = "financial-data-storage"; // Remplacez par votre vrai project ID
-  const database_Id = "agregation_data_preprod";
-  const indice = ["DJI","cac40"]; // base de donnée resultat
+  const database_Id = "agregation_data_prod";
+  const indice = ["cac40","DJI","SP500","Nasdaq","Nasdaq100"]; // base de donnée resultat
 
 }
 
@@ -155,7 +155,7 @@ inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_TRUE_RANGE_TI\
 inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_WILLIAMS_R_TI\` c22 on a1.Date = c22.Date
 inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_Candlestick_Patterns_TI\` c23 on a1.Date = c23.Date
 
-order by a1.Date
+order by a1.Date desc
 
 
 
