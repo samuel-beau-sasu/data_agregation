@@ -94,7 +94,17 @@ c20.Stoch_K,
 c20.Stoch_D,
 c21.True_Range,	
 c21.ATR,
-Williams_R,
+c22.Williams_R,
+c23.Component_1,
+c23.Component_2,
+c23.Component_3,
+c23.Component_4,
+c23.Component_5,
+c23.Component_6,
+c23.Component_7,
+c23.Component_8,
+c23.Component_9,
+c23.Component_10,
 
 # sous-jacent
 c1.Index_Name
@@ -143,6 +153,7 @@ inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_SAR_TI\` c19 o
 inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_STOCHASTIC_TI\` c20 on a1.Date = c20.Date
 inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_TRUE_RANGE_TI\` c21 on a1.Date = c21.Date
 inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_WILLIAMS_R_TI\` c22 on a1.Date = c22.Date
+inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_Candlestick_Patterns_TI\` c23 on a1.Date = c23.Date
 
 order by a1.Date
 
