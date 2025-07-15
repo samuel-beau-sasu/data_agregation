@@ -120,7 +120,7 @@ inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_8\` a8 on 
 inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_9\` a9 on a1.Date = a9.Date
 inner join \`financial-data-storage.Ind_Extremum_prod.${item}_min_max_10\` a10 on a1.Date = a10.Date
 
-inner join \`financial-data-storage.clean_data_prod.acp_projection\` b1 on a1.Date = b1.Date
+left join \`financial-data-storage.clean_data_prod.acp_projection\` b1 on a1.Date = b1.Date
 
 inner join \`financial-data-storage.clean_data_prod.USD_CHF\` b2 on a1.Date = b2.Date
 inner join \`financial-data-storage.clean_data_prod.USD_CNY\` b3 on a1.Date = b3.Date
@@ -128,8 +128,8 @@ inner join \`financial-data-storage.clean_data_prod.USD_EUR\` b4 on a1.Date = b4
 inner join \`financial-data-storage.clean_data_prod.USD_GBP\` b5 on a1.Date = b5.Date
 inner join \`financial-data-storage.clean_data_prod.USD_JPY\` b6 on a1.Date = b6.Date
 
-inner join \`financial-data-storage.clean_data_prod.VIX\` b7 on a1.Date = b7.Date
-inner join \`financial-data-storage.clean_data_prod.VXD\` b8 on a1.Date = b8.Date
+left join \`financial-data-storage.clean_data_prod.VIX\` b7 on a1.Date = b7.Date
+left join \`financial-data-storage.clean_data_prod.VXD\` b8 on a1.Date = b8.Date
 
 inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_AROON_TI\` c1 on a1.Date = c1.Date
 inner join \`financial-data-storage.Ind_Tech_${item}_prod.${item}_BOLLINGER_BANDS_TI\` c2 on a1.Date = c2.Date
